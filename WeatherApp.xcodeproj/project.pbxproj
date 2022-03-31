@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C25DD61427DE500F003B5352 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25DD61327DE500F003B5352 /* Configuration.swift */; };
+		C25DD61727DE51F0003B5352 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25DD61627DE51F0003B5352 /* DataManager.swift */; };
 		C2AD8BDB27C9A63000DA6C69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AD8BDA27C9A63000DA6C69 /* AppDelegate.swift */; };
 		C2AD8BDD27C9A63000DA6C69 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AD8BDC27C9A63000DA6C69 /* SceneDelegate.swift */; };
 		C2AD8BDF27C9A63000DA6C69 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AD8BDE27C9A63000DA6C69 /* ViewController.swift */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C25DD61327DE500F003B5352 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		C25DD61627DE51F0003B5352 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		C2AD8BD727C9A63000DA6C69 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2AD8BDA27C9A63000DA6C69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C2AD8BDC27C9A63000DA6C69 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +70,8 @@
 				C2AD8BE827C9A63300DA6C69 /* LaunchScreen.storyboard */,
 				C2AD8BEB27C9A63300DA6C69 /* Info.plist */,
 				C2AD8BE327C9A63000DA6C69 /* WeatherApp.xcdatamodeld */,
+				C25DD61327DE500F003B5352 /* Configuration.swift */,
+				C25DD61627DE51F0003B5352 /* DataManager.swift */,
 			);
 			path = WeatherApp;
 			sourceTree = "<group>";
@@ -141,6 +147,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2AD8BE527C9A63000DA6C69 /* WeatherApp.xcdatamodeld in Sources */,
+				C25DD61727DE51F0003B5352 /* DataManager.swift in Sources */,
+				C25DD61427DE500F003B5352 /* Configuration.swift in Sources */,
 				C2AD8BDF27C9A63000DA6C69 /* ViewController.swift in Sources */,
 				C2AD8BDB27C9A63000DA6C69 /* AppDelegate.swift in Sources */,
 				C2AD8BDD27C9A63000DA6C69 /* SceneDelegate.swift in Sources */,
