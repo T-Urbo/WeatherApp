@@ -23,6 +23,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var humidityValueLabel: UILabel!
     
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +33,7 @@ class ViewController: UIViewController {
         
         humidityValueLabel.text = String(weatherData.humidity!)
         PullJSONData(url: baseURL, forecast: false)
-        
+        print("Hello github")
 //        regionNameLabel.text = weatherData.country!
         
         
