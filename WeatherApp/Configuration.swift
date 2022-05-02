@@ -11,97 +11,59 @@ let apiKey: String = "c4d3ef97c595972e94871a5a88eaf4cb"
 
 let baseURL: URL! = URL(string: "http://api.openweathermap.org/data/2.5/forecast?id=524901&appid=c4d3ef97c595972e94871a5a88eaf4cb")
 
-let jsonData: Data? = """
-{"coord":{"lon":-80,"lat":40.44},"weather":[{"id":804,"main":"Clouds","description":"overcast clouds","icon":"04d"}],"base":"stations","main":{"temp":41.5,"feels_like":36.81,"temp_min":37.4,"temp_max":45,"pressure":1021,"humidity":80},"visibility":16093,"wind":{"speed":3.04,"deg":79},"clouds":{"all":90},"dt":1585068301,"sys":{"type":1,"id":3510,"country":"US","sunrise":1585048554,"sunset":1585092969},"timezone":-14400,"id":5206379,"name":"Pittsburgh","cod":200}
-""".data(using: .utf8)
 
-struct Weather: Codable {
-    var temp: Double?
-    var humidity: Double?
-    var country: String?
-}
+
+///-----------OpenWeather API structures-----------
 
 struct WeatherMain: Codable {
-    let main: Weather
+    var coord: Coordinates
+    var weather: [Weather] = []
+    var main: Main
+    var name: String = "name"
 }
 
-struct City: Codable {
-    var name: String?
-    var country: String?
-    var sunrise: Int?
-    var sunset: Int?
-}
-
-func DecodeJSONData(jsonData: Data, temperature: inout Double, humidity: inout Double, country: inout String) {
-    
-    do {
-        let weatherData = try? JSONDecoder().decode(WeatherMain.self, from: jsonData)
-        print(weatherData)
-        if let weatherData = weatherData {
-            let weather = weatherData.main
-            print(weather.humidity!)
-            print(weather.temp!)
-            
-            temperature = weather.temp!
-            humidity = weather.humidity!
-            country = weather.country!
-        }
-    }
-    
+struct Coordinates: Codable {
+    var lon: Double = 0.0
+    var lat: Double = 0.0
     
 }
 
-
-
-struct WeatherManager {
-    
-func decodeJSONData(jsonData: Data) -> Weather?{
-        do {
-            let weatherData = try? JSONDecoder().decode(WeatherMain.self, from: jsonData)
-            print(weatherData)
-            if let weatherData = weatherData {
-                let weather = weatherData.main
-                
-                return weatherData.main
-                print(weather.humidity!)
-                print(weather.temp!)
-                
-                
-                
-            }
-        }
-        return nil
-        
-    }
+struct Weather: Codable {
+    var id: Int = 0
+    var description: String = "description"
+    var icon: String = "icon"
 }
 
-func PullJSONData(url: URL?, forecast: Bool)
-{
-    let task = URLSession.shared.dataTask(with: url!) { data, response, error in
-        if let error = error {
-            print("arror acquired: \(error.localizedDescription)")
-        }
-        
-        let weatherManager = WeatherManager()
-        
-        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-            print("HTTP Response Error acquired")
-            return
-        }
-        
-        guard let data = data else {
-            print("No Response Error acquired ")
-            return
-        }
-        
-        if (!forecast)
-        {
-            weatherManager.decodeJSONData(jsonData: jsonData!)
-        } else {
-            
-        }
-    }
-    task.resume()
+struct Clouds: Codable {
+    var all: Int = 0
 }
 
+struct Main: Codable {
+    var temp: Double = 0.0
+    var feels_like: Double = 0.0
+    var temp_min: Double = 0.0
+    var temp_max: Double = 0.0
+    var pressure: Int = 0
+    var humidity: Int = 0
+}
 
+///-----------Search longtitude and latitude with city name API structures-----------
+
+var cityName: String = "Gliwice"
+var cityAPIRequest: String = "https://api.openweathermap.org/data/2.5/weather?q=\(cityName)&appid=\(apiKey)"
+
+struct CityCoordinatesMain: Codable {
+    var coord: CityCoordinates
+    var weather: [CityWeather] = []
+}
+
+struct CityCoordinates: Codable {
+    var lon: Double = 0.0
+    var lat: Double = 0.0
+}
+
+struct CityWeather: Codable {
+    var id: Int = 0
+    var description: String = ""
+    var icon: String = ""
+}

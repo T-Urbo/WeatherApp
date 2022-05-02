@@ -359,7 +359,6 @@ depends-member:
 - ["So21UIApplicationDelegateP", "persistentContainer"]
 - ["So21UIApplicationDelegateP", "saveContext"]
 - ["So21UIApplicationDelegateP", "window"]
-- ["So18UIFocusEnvironmentP", ""]
 - ["So30UIPasteConfigurationSupportingP", "$__lazy_storage_$_persistentContainer"]
 - ["So30UIPasteConfigurationSupportingP", "$main"]
 - ["So30UIPasteConfigurationSupportingP", "Bool"]
@@ -590,7 +589,6 @@ depends-nominal:
 - "s20TextOutputStreamableP"
 - "So13UIApplicationC"
 - "So21UIApplicationDelegateP"
-- "So18UIFocusEnvironmentP"
 - "So30UIPasteConfigurationSupportingP"
 - "So11UIResponderC"
 - "So30UIResponderStandardEditActionsP"

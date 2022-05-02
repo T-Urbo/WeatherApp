@@ -185,7 +185,6 @@ depends-member:
 - !private ["So13UIApplicationC", "delegate"]
 - !private ["So13UIApplicationC", "shared"]
 - ["So21UIApplicationDelegateP", "saveContext"]
-- ["So18UIFocusEnvironmentP", ""]
 - !private ["So30UIPasteConfigurationSupportingP", "AppDelegate"]
 - ["So30UIPasteConfigurationSupportingP", "ConnectionOptions"]
 - !private ["So30UIPasteConfigurationSupportingP", "UIApplication"]
@@ -365,7 +364,6 @@ depends-nominal:
 - "s20TextOutputStreamableP"
 - !private "So13UIApplicationC"
 - "So21UIApplicationDelegateP"
-- "So18UIFocusEnvironmentP"
 - "So30UIPasteConfigurationSupportingP"
 - "So11UIResponderC"
 - "So30UIResponderStandardEditActionsP"
