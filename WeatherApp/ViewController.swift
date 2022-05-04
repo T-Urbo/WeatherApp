@@ -9,10 +9,11 @@
 // MARK: Add cancel gesture with tapping on screen to searchBar or add the Cancel button => DONE!
 // MARK: Format the data to the correct form(Day, Time) => DONE!
 // MARK: Add geolocation default weather values =>
-// MARK: Format time label in center =>
-// MARK: Change search bar call from the search button to regionLabel
+// MARK: Format time label in center => DONE!
+// MARK: Change search bar call from the search button to regionLabel => DONE!
 // MARK: Make the code structurized
 // MARK: Change the gradient
+// MARK: Close the search bar field after pressing the search button
 
 import UIKit
 import Foundation
@@ -21,7 +22,7 @@ class ViewController: UIViewController, UISearchBarDelegate, UISearchControllerD
     
     @IBOutlet weak var searchBarField: UISearchBar!
     
-    @IBOutlet weak var regionNameLabel: UILabel!
+    @IBOutlet weak var regionNameButton: UIButton!
     
     @IBOutlet weak var searchBarHieghtConstreint: NSLayoutConstraint!
     
@@ -37,9 +38,9 @@ class ViewController: UIViewController, UISearchBarDelegate, UISearchControllerD
     
     @IBOutlet weak var tempMinLabel: UILabel!
     
-    @IBOutlet weak var regionSearchButton: UIButton!
-    
     var searchBarButtonItem:  UIBarButtonItem?
+    
+    var url: String = "https://api.openweathermap.org/data/2.5/weather?q=\(cityName)&appid=c4d3ef97c595972e94871a5a88eaf4cb"
     
     override func viewWillAppear(_ animated: Bool) {
         setGradientBackground()
@@ -51,9 +52,13 @@ class ViewController: UIViewController, UISearchBarDelegate, UISearchControllerD
         super.viewDidLoad()
         
         let searchController = UISearchController(searchResultsController: nil)
+        regionNameButton.center = self.view.center
+        
         
         showCurrentTime()
-        parseJSONData(url: "https://api.openweathermap.org/data/2.5/weather?q=\(cityName)&appid=c4d3ef97c595972e94871a5a88eaf4cb")
+        parseJSONData(url: url)
+        
+        
         
         navigationItem.searchController = searchController
         searchController.searchResultsUpdater = self
@@ -67,7 +72,7 @@ class ViewController: UIViewController, UISearchBarDelegate, UISearchControllerD
         
     }
     
-    @IBAction func onRegionSearchButtonClick(_ sender: Any) {
+    @IBAction func onRegionNameButtonClick(_ sender: Any) {
         print("Test")
         self.searchBarField.searchBarStyle = .minimal
         self.searchBarField.searchTextField.backgroundColor = .white
@@ -101,7 +106,7 @@ class ViewController: UIViewController, UISearchBarDelegate, UISearchControllerD
             
             DispatchQueue.main.async {
                 if weatherMain != nil {
-                    self.regionNameLabel.text = weatherMain?.name
+                    self.regionNameButton.setTitle(weatherMain?.name, for: .normal)
                     self.degreesValueLabel.text = String(Int(self.convertKelvinToCelsius(temp: weatherMain!.main.temp_max))) + "°"
                     self.degreesValueLabel.addCharacterSpacing(kernValue: 20)
                     self.humidityValueLabel.text = String(weatherMain!.main.humidity)
@@ -139,9 +144,6 @@ class ViewController: UIViewController, UISearchBarDelegate, UISearchControllerD
         self.currentTimeLabel.text = currentDate
         
         var weekDay = Calendar.current.component(.weekday, from: Date())
-
-        
-//
     }
     
 }
@@ -182,6 +184,11 @@ extension ViewController {
         print(cityName)
         
         parseJSONData(url: "https://api.openweathermap.org/data/2.5/weather?q=\(cityName)&appid=c4d3ef97c595972e94871a5a88eaf4cb")
+        
+        searchBarHieghtConstreint.constant = 0
+        UIView.animate(withDuration: 0.2, animations: {
+            self.view.layoutIfNeeded()
+        })
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {

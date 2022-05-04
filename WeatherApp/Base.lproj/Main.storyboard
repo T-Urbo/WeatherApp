@@ -56,16 +56,6 @@
                                 <color key="textColor" red="0.97859677860000005" green="1" blue="0.97455926810000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="region_name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pJ7-zs-rta">
-                                <rect key="frame" x="129" y="51" width="157" height="163"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="157" id="sdg-G1-kGr"/>
-                                    <constraint firstAttribute="height" constant="163" id="wTz-Yb-hiB"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="40"/>
-                                <color key="textColor" red="0.97859677860000005" green="1" blue="0.97455926810000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="lqw-6A-bII">
                                 <rect key="frame" x="0.0" y="300.5" width="414" height="60"/>
                                 <subviews>
@@ -82,26 +72,6 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ddg-eM-mpt">
-                                <rect key="frame" x="323" y="101" width="83" height="75"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="69"/>
-                                <color key="tintColor" red="0.91396130180000001" green="0.91396130180000001" blue="0.91396130180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" image="magnifyingglass" catalog="system">
-                                    <color key="titleColor" red="0.91396130180000001" green="0.91396130180000001" blue="0.91396130180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="titleShadowColor" red="0.91396130180000001" green="0.91396130180000001" blue="0.91396130180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30" scale="large" weight="semibold"/>
-                                </state>
-                                <connections>
-                                    <action selector="onRegionSearchButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="raI-eG-kRh"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ijz-o2-lfE">
-                                <rect key="frame" x="8" y="155" width="398" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="kjz-1o-Pxa">
                                 <rect key="frame" x="0.0" y="44" width="414" height="0.0"/>
                                 <constraints>
@@ -109,41 +79,50 @@
                                 </constraints>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="qMG-nh-3rB">
+                                <rect key="frame" x="90" y="84" width="234" height="91.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Duk-2n-tHh">
+                                        <rect key="frame" x="0.0" y="0.0" width="234" height="60"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="40"/>
+                                        <state key="normal" title="region_button">
+                                            <color key="titleColor" red="0.91396130180000001" green="0.91396130180000001" blue="0.91396130180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onRegionNameButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Pbd-Lw-E5c"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ijz-o2-lfE">
+                                        <rect key="frame" x="98" y="71" width="38" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="linkColor"/>
                         <constraints>
                             <constraint firstItem="pNC-C1-B02" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="0Y5-87-buC"/>
-                            <constraint firstItem="pJ7-zs-rta" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="129" id="0nt-sP-v5F"/>
                             <constraint firstItem="kjz-1o-Pxa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="4ag-nA-mTA"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pJ7-zs-rta" secondAttribute="trailing" constant="128" id="5gq-cu-kcY"/>
-                            <constraint firstItem="Ijz-o2-lfE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="66X-fm-Phq"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lqw-6A-bII" secondAttribute="trailing" id="73W-TD-Ru4"/>
-                            <constraint firstItem="Ijz-o2-lfE" firstAttribute="centerX" secondItem="pJ7-zs-rta" secondAttribute="centerX" id="8hr-fe-r31"/>
                             <constraint firstItem="lqw-6A-bII" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="8tD-8t-4j7"/>
+                            <constraint firstItem="qMG-nh-3rB" firstAttribute="top" secondItem="kjz-1o-Pxa" secondAttribute="bottom" constant="40" id="Afl-Mn-jG0"/>
                             <constraint firstItem="kjz-1o-Pxa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="GXW-Yx-MmQ"/>
                             <constraint firstItem="pNC-C1-B02" firstAttribute="top" secondItem="lqw-6A-bII" secondAttribute="bottom" constant="10" id="GZD-lf-xDs"/>
                             <constraint firstItem="pNC-C1-B02" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Gad-fY-j1a"/>
-                            <constraint firstItem="pJ7-zs-rta" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="129" id="OxV-c3-Hiu"/>
-                            <constraint firstItem="pJ7-zs-rta" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="YX7-yq-QR2"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pNC-C1-B02" secondAttribute="trailing" id="YyE-Kx-qj1"/>
-                            <constraint firstItem="Ijz-o2-lfE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="aSC-k4-uKo"/>
-                            <constraint firstItem="pJ7-zs-rta" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.379227" id="d9p-ts-csz"/>
-                            <constraint firstItem="pJ7-zs-rta" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="7" id="hnO-Ym-n66"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ijz-o2-lfE" secondAttribute="trailing" id="ie2-9Y-nCR"/>
-                            <constraint firstItem="pJ7-zs-rta" firstAttribute="top" secondItem="kjz-1o-Pxa" secondAttribute="top" constant="7" id="keg-5i-eEp"/>
-                            <constraint firstItem="lqw-6A-bII" firstAttribute="top" secondItem="Ijz-o2-lfE" secondAttribute="bottom" constant="76" id="mIG-cu-Jbb"/>
+                            <constraint firstItem="qMG-nh-3rB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="90" id="gNk-Ze-hfO"/>
                             <constraint firstItem="kjz-1o-Pxa" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="pIS-Sz-tqH"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pJ7-zs-rta" secondAttribute="trailing" constant="128" id="sP3-xM-yzR"/>
-                            <constraint firstItem="Ijz-o2-lfE" firstAttribute="trailing" secondItem="pJ7-zs-rta" secondAttribute="trailing" id="wQJ-9W-8YY"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qMG-nh-3rB" secondAttribute="trailing" constant="90" id="zae-He-YdP"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="currentTimeLabel" destination="Ijz-o2-lfE" id="HKJ-oW-V1C"/>
                         <outlet property="degreesValueLabel" destination="BBm-jn-62l" id="sUH-xe-IVa"/>
                         <outlet property="humidityValueLabel" destination="VTA-bp-27I" id="Kgf-iQ-BJD"/>
-                        <outlet property="regionNameLabel" destination="pJ7-zs-rta" id="M7v-VN-iy5"/>
-                        <outlet property="regionSearchButton" destination="Ddg-eM-mpt" id="qh2-fr-x4p"/>
+                        <outlet property="regionNameButton" destination="Duk-2n-tHh" id="xBs-hy-flh"/>
                         <outlet property="searchBarField" destination="kjz-1o-Pxa" id="Jng-bJ-8K8"/>
                         <outlet property="searchBarHieghtConstreint" destination="vAI-2q-Gcx" id="8Dq-Fv-YV4"/>
                         <outlet property="tempMaxLabel" destination="mdg-An-YAn" id="bfz-PB-rMQ"/>
@@ -159,7 +138,6 @@
     <resources>
         <image name="cloud" catalog="system" width="128" height="87"/>
         <image name="line.horizontal.3.decrease" catalog="system" width="128" height="73"/>
-        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
