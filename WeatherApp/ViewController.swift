@@ -14,6 +14,9 @@
 // MARK: Make the code structurized
 // MARK: Change the gradient
 // MARK: Close the search bar field after pressing the search button
+// TODO: Finish calculateWeatherCondition function! ==>
+// TODO: Make the search bar dissapear after the second click on the region name => DONE!
+// TODO: Make an icon for the app
 
 import UIKit
 import Foundation
@@ -30,6 +33,8 @@ class ViewController: UIViewController, UISearchBarDelegate, UISearchControllerD
     
     @IBOutlet weak var weatherConditionLabel: UILabel!
     
+    @IBOutlet weak var weatherConditionImage: UIImageView!
+    
     @IBOutlet weak var degreesValueLabel: UILabel!
     
     @IBOutlet weak var humidityValueLabel: UILabel!
@@ -41,6 +46,8 @@ class ViewController: UIViewController, UISearchBarDelegate, UISearchControllerD
     var searchBarButtonItem:  UIBarButtonItem?
     
     var url: String = "https://api.openweathermap.org/data/2.5/weather?q=\(cityName)&appid=c4d3ef97c595972e94871a5a88eaf4cb"
+    
+    var counter: Int = 0
     
     override func viewWillAppear(_ animated: Bool) {
         setGradientBackground()
@@ -78,11 +85,20 @@ class ViewController: UIViewController, UISearchBarDelegate, UISearchControllerD
         self.searchBarField.searchTextField.backgroundColor = .white
         searchBarField.tintColor = .white
         self.searchBarField.setShowsCancelButton(true, animated: true)
-//        self.searchBarField.showsCancelButton = true
-        searchBarHieghtConstreint.constant = 50
-        UIView.animate(withDuration: 0.2, animations: {
-            self.view.layoutIfNeeded()
-        })
+        if(counter % 2 == 0) {
+            searchBarHieghtConstreint.constant = 50
+            UIView.animate(withDuration: 0.2, animations: {
+                self.view.layoutIfNeeded()
+            })
+        }
+        else {
+            searchBarHieghtConstreint.constant = 0
+            UIView.animate(withDuration: 0.25, animations: {
+                self.view.layoutIfNeeded()
+            })
+        }
+        
+        counter+=1
     }
     
     
@@ -112,7 +128,7 @@ class ViewController: UIViewController, UISearchBarDelegate, UISearchControllerD
                     self.humidityValueLabel.text = String(weatherMain!.main.humidity)
                     self.tempMaxLabel.text = String(Int(self.convertKelvinToCelsius(temp: weatherMain!.main.temp_max))) + "°C"
                     self.tempMinLabel.text = String(Int(self.convertKelvinToCelsius(temp: weatherMain!.main.temp_min))) + "°C"
-                    self.weatherConditionLabel.text = "Cloudy"
+                    self.calculateWeatherCondition(cloudiness: weatherMain!.clouds.all)
                 }
                 else {
                     print("SOMETHING WENT WRONG")
@@ -125,6 +141,25 @@ class ViewController: UIViewController, UISearchBarDelegate, UISearchControllerD
         })
         task.resume()
         
+    }
+    
+    func calculateWeatherCondition(cloudiness percent: Int) {
+        if percent >= 80 {
+            self.weatherConditionLabel.text = "Overcast"
+            weatherConditionImage.image = UIImage(systemName: "cloud.fill")
+        }
+        else if percent < 80 && percent >= 50 {
+            self.weatherConditionLabel.text = "Cloudy"
+            weatherConditionImage.image = UIImage(systemName: "cloud")
+        }
+        else if percent < 50 && percent >= 20 {
+            self.weatherConditionLabel.text = "Few clouds"
+            weatherConditionImage.image = UIImage(systemName: "cloud.sun")
+        }
+        else if percent < 20 {
+            self.weatherConditionLabel.text = "Clear"
+            weatherConditionImage.image = UIImage(systemName: "sun.min.fill")
+        }
     }
     
     func convertKelvinToCelsius(temp: Double) -> Double {

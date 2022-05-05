@@ -20,6 +20,7 @@ struct WeatherMain: Codable {
     var weather: [Weather] = []
     var main: Main
     var name: String = "name"
+    var clouds: Clouds //
 }
 
 struct Coordinates: Codable {
